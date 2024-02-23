@@ -15,7 +15,7 @@ SECRET_KEY = 'django-insecure-bdlw)_ur=pcoy6xi+7#2))^1!0_m#++3f$jb!6x^wxwkkvu((6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '8000-gourabdg47-ghaanjunctio-tiec2eg0pwf.ws-us108.gitpod.io']
 
 # CORS_ALLOWED_ORIGINS = [
 #     "http://localhost:3000",
@@ -36,6 +36,7 @@ INSTALLED_APPS = [
 ]
 
 EXTERNAL_APPS = [
+    'accounts',
     'login_auth',
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
@@ -61,6 +62,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'g_junction.urls'
@@ -94,15 +97,29 @@ WSGI_APPLICATION = 'g_junction.wsgi.application'
 #     }
 # }
 
+# Local DB Conn
+# DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'NAME': 'gyaan-junction-local',
+#        'USER': 'postgres',
+#        'PASSWORD': 'root',
+#        'HOST': 'localhost',
+#        'PORT': '5432',
+#    }
+# }
+
+# Remote Test DB Conn
 DATABASES = {
-   'default': {
-       'ENGINE': 'django.db.backends.postgresql',
-       'NAME': 'gyaan-junction-local',
-       'USER': 'postgres',
-       'PASSWORD': 'root',
-       'HOST': 'localhost',
-       'PORT': '5432',
-   }
+  'default': {
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': 'gyaan-test-db',
+    'USER': 'gourabdg47',
+    'PASSWORD': 'aYpo0OVrNc3X',
+    'HOST': 'ep-fancy-glitter-a5vdaoj2.us-east-2.aws.neon.tech',
+    'PORT': '5432',
+    'OPTIONS': {'sslmode': 'require'},
+  }
 }
 
 
